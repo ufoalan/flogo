@@ -42,6 +42,7 @@ import (
 
 	tf "github.com/tensorflow/tensorflow/tensorflow/go"
 	"github.com/tensorflow/tensorflow/tensorflow/go/op"
+	"github.com/tensorflow/tensorflow"
 //	"github.com/TIBCOSoftware/flogo-lib/logger"
 )
 
