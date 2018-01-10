@@ -40,9 +40,11 @@ import (
 	"golang.org/x/image/font/basicfont"
 	"golang.org/x/image/math/fixed"
 
-	tf "github.com/tensorflow/tensorflow/tensorflow/go"
-	"github.com/tensorflow/tensorflow/tensorflow/go/op"
+//	tf "github.com/tensorflow/tensorflow/tensorflow/go"
+//	"github.com/tensorflow/tensorflow/tensorflow/go/op"
 	"github.com/tensorflow/tensorflow"
+	tf "tensorflow/go"
+	"tensorflow/go/op"
 //	"github.com/TIBCOSoftware/flogo-lib/logger"
 )
 
