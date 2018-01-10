@@ -114,14 +114,13 @@ func (t *MyTrigger) Start() error {
 
 					t1 := time.Now()
 					s := t1.Format("20060102150405")
-					saveFile := "/Users/allee/Downloads/tmp/" + s + ".jpg"
+					saveFile := "/home/pi/Downloads/tmp/" + s + ".jpg"
 					gocv.IMWrite(saveFile, img)
 
 					dir := "/home/pi/tf_test/ssd_mobilenet_v1_coco_11_06_2017"
 					jpg := saveFile
 					outjpg := "/home/pi/Downloads/tmp/" + s + "_out.jpg"
 					labelsFile := "/home/pi/tf_test/labels.txt"
-					graph := tf.NewGraph()
 					classify(dir, jpg, outjpg, labelsFile)
 					//sendMail(saveFile)
                 			data := map[string]interface{}{
