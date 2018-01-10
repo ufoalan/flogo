@@ -1,0 +1,38 @@
+{
+  "name": "test",
+  "ref": "github.com/ufoalan/flogo/trigger/test",
+  "version": "0.0.1",
+  "type": "flogo:trigger",
+  "description": "trigger description",
+  "author": "Your Name <you.name@example.org>",
+  "settings":[
+    {
+      "name": "cameraID",
+      "type": "integer",
+      "required": "true"
+    },
+    {
+      "name": "classifier_file",
+      "type": "string",
+      "required": "true"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "type": "string"
+    },
+    {
+      "name": "image",
+      "type": "string"
+    }
+  ],
+  "handler": {
+    "settings": [
+      {
+        "name": "handler_setting",
+        "type": "string"
+      }
+    ]
+  }
+}

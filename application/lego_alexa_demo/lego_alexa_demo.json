@@ -1,0 +1,224 @@
+{
+  "name": "Lego Alexa Demo",
+  "type": "flogo:app",
+  "version": "0.0.1",
+  "description": "This demo is to show the Flogo capability that control Lego Mindstorm EV3 using custom activity control_ev3. The demo receives command from AWS Alexa and the command will be sent through AWS IOT MQTT gateway. The Flogo flow will be triggered by MQTT command and control the EV3's motor",
+  "triggers": [
+    {
+      "name": "Receive MQTT Message",
+      "ref": "github.com/anshulsharmas/flogo-contrib/trigger/mqtt",
+      "description": "Simple MQTT Trigger with TLS suppport",
+      "settings": {
+        "broker": "ssl://a38r485pypjh6i.iot.us-east-1.amazonaws.com:8883",
+        "id": "flogo",
+        "user": "abc",
+        "password": "abc",
+        "store": "abc",
+        "topic": "/awsiot_to_localgateway",
+        "qos": "0",
+        "cleansess": "true"
+      },
+      "id": "receive_mqtt_message",
+      "handlers": [
+        {
+          "settings": {
+            "topic": "/awsiot_to_localgateway"
+          },
+          "actionId": "lego_control_via_mqtt"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "name": "Lego control via MQTT",
+      "data": {
+        "flow": {
+          "type": 1,
+          "attributes": [],
+          "rootTask": {
+            "id": 1,
+            "type": 1,
+            "tasks": [
+              {
+                "id": 2,
+                "name": "Log Message",
+                "description": "Simple Log Activity",
+                "type": 1,
+                "activityType": "github-com-tibco-software-flogo-contrib-activity-log",
+                "activityRef": "github.com/TIBCOSoftware/flogo-contrib/activity/log",
+                "attributes": [
+                  {
+                    "name": "message",
+                    "value": "start demo",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "flowInfo",
+                    "value": "true",
+                    "required": false,
+                    "type": "boolean"
+                  },
+                  {
+                    "name": "addToFlow",
+                    "value": "true",
+                    "required": false,
+                    "type": "boolean"
+                  }
+                ],
+                "inputMappings": [
+                  {
+                    "type": 1,
+                    "value": "{T.message}",
+                    "mapTo": "message"
+                  }
+                ]
+              },
+              {
+                "id": 3,
+                "name": "Log Message action decision",
+                "description": "Simple Log Activity",
+                "type": 1,
+                "activityType": "github-com-tibco-software-flogo-contrib-activity-log",
+                "activityRef": "github.com/TIBCOSoftware/flogo-contrib/activity/log",
+                "attributes": [
+                  {
+                    "name": "message",
+                    "value": "action decision",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "flowInfo",
+                    "value": "true",
+                    "required": false,
+                    "type": "boolean"
+                  },
+                  {
+                    "name": "addToFlow",
+                    "value": "true",
+                    "required": false,
+                    "type": "boolean"
+                  }
+                ],
+                "inputMappings": [
+                  {
+                    "type": 1,
+                    "value": "{T.message}",
+                    "mapTo": "message"
+                  }
+                ]
+              },
+              {
+                "id": 4,
+                "name": "Control EV3 start",
+                "description": "Control Lego motor",
+                "type": 1,
+                "activityType": "github-com-ufoalan-activity-control-ev-3",
+                "activityRef": "github.com/ufoalan/activity/control_ev3",
+                "attributes": [
+                  {
+                    "name": "method",
+                    "value": "start",
+                    "required": true,
+                    "type": "string"
+                  },
+                  {
+                    "name": "value",
+                    "value": 0,
+                    "required": true,
+                    "type": "integer"
+                  },
+                  {
+                    "name": "port",
+                    "value": "outA",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "state",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "Pull",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  }
+                ]
+              },
+              {
+                "id": 5,
+                "name": "Control EV3 stop",
+                "description": "Control Lego motor",
+                "type": 1,
+                "activityType": "github-com-ufoalan-activity-control-ev-3",
+                "activityRef": "github.com/ufoalan/activity/control_ev3",
+                "attributes": [
+                  {
+                    "name": "method",
+                    "value": "stop",
+                    "required": true,
+                    "type": "string"
+                  },
+                  {
+                    "name": "value",
+                    "value": 0,
+                    "required": true,
+                    "type": "integer"
+                  },
+                  {
+                    "name": "port",
+                    "value": "outA",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "state",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "Pull",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  }
+                ]
+              }
+            ],
+            "links": [
+              {
+                "id": 1,
+                "from": 2,
+                "to": 3,
+                "type": 0
+              },
+              {
+                "id": 2,
+                "from": 3,
+                "to": 4,
+                "type": 1,
+                "value": "${T.message}==\"1\""
+              },
+              {
+                "id": 3,
+                "from": 3,
+                "to": 5,
+                "type": 1,
+                "value": "${T.message}==\"0\""
+              }
+            ],
+            "attributes": []
+          }
+        }
+      },
+      "id": "lego_control_via_mqtt",
+      "ref": "github.com/TIBCOSoftware/flogo-contrib/action/flow"
+    }
+  ]
+}

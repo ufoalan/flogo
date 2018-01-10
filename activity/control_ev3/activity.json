@@ -1,0 +1,44 @@
+{
+  "name": "control_ev3",
+  "type": "flogo:activity",
+  "ref": "github.com/ufoalan/activity/control_ev3",
+  "version": "0.0.1",
+  "title": "Control EV3",
+  "description": "Control Lego motor",
+  "homepage": "https://github.com/ufoalan/activity/tree/master/control_ev3",
+  "inputs":[
+    {
+      "name": "method",
+      "type": "string",
+      "required": true,
+      "allowed" : ["start", "stop", "auto", "sleep"]
+    },
+    {
+      "name": "value",
+      "type": "integer",
+      "required": true
+    },
+    {
+      "name": "port",
+      "type": "string",
+      "allowed" : ["outA", "outB", "outC", "outD"]
+    },
+    {
+      "name": "state",
+      "type": "string",
+      "allowed" : ["High", "Low"]
+    },
+
+    {
+      "name": "Pull",
+      "type": "string",
+      "allowed" : ["Up", "Down", "Off"]
+    }
+  ],
+  "outputs": [
+    {
+      "name": "result",
+      "type": "integer"
+    }
+  ]
+}

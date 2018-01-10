@@ -1,0 +1,38 @@
+{
+  "name": "object_detect",
+  "ref": "github.com/ufoalan/flogo/trigger/object_detect",
+  "version": "0.1.1",
+  "type": "flogo:trigger",
+  "description": "This trigger is built for RaspberryPi Camera for human face and object detection",
+  "author": "Alan Lee <you.name@example.org>",
+  "settings":[
+    {
+      "name": "cameraID",
+      "type": "integer",
+      "required": "true"
+    },
+    {
+      "name": "classifier_file",
+      "type": "string",
+      "required": "true"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "type": "string"
+    },
+    {
+      "name": "image",
+      "type": "string"
+    }
+  ],
+  "handler": {
+    "settings": [
+      {
+        "name": "handler_setting",
+        "type": "string"
+      }
+    ]
+  }
+}
