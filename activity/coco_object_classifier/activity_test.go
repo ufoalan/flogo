@@ -41,14 +41,16 @@ func TestReadState(t *testing.T) {
 	tc := test.NewTestActivityContext(getActivityMetadata())
 
 	//setup attrs
-	tc.SetInput("method", "start")
-	tc.SetInput("pin number", 10)
+	tc.SetInput("model_file_path", "/home/pi")
+	tc.SetInput("input_image_file", "/home/pi/1.jpg")
+	tc.SetInput("output_image_path", "/home/pi/2")
+	tc.SetInput("labels_file", "/home/pi/3")
 	//eval
 	_, err := act.Eval(tc)
 	if err != nil {
 		log.Errorf("Error occured: %+v", err)
 	}
-	val := tc.GetOutput("result")
-	log.Debugf("Resut %s", val)
+	val := tc.GetOutput("output")
+	log.Debugf("output %s", val)
 
 }

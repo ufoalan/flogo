@@ -3,7 +3,6 @@ package coco_object_classifier
 import (
 	"errors"
 	"fmt"
-	"time"
 	"strings"
 
 	"github.com/TIBCOSoftware/flogo-lib/core/activity"
@@ -40,6 +39,7 @@ func (a *GPIOActivity) Metadata() *activity.Metadata {
 func (a *GPIOActivity) Eval(context activity.Context) (done bool, err error) {
 	//getmethod
 	log.Debug("Running COCO object classifier activity.")
+	fmt.Println("Running COCO object classifier activity.")
 	modelFilePathInput := context.GetInput(ivModelFilePath)
 	inputImageFileInput := context.GetInput(ivInputImageFile)
 	outputImagePathInput := context.GetInput(ivOutputImagePath)
@@ -62,11 +62,10 @@ func (a *GPIOActivity) Eval(context activity.Context) (done bool, err error) {
 
 	// Get last index, searching from right to left.
 	i := strings.LastIndex(input_image_file, "/")
-	inputpath := input_image_file[:i]
 	inputfile := input_image_file[i:]
 	outputFile := strings.Replace(inputfile, ".jpg", "_out.jpg", -1)
 	outputpath := output_image_path + outputFile
-	fmt.Println(new_path)
+	fmt.Println(outputpath)
 
 	labels_file, ok := labelsFileInput.(string)
 	if !ok {
@@ -74,6 +73,7 @@ func (a *GPIOActivity) Eval(context activity.Context) (done bool, err error) {
 	}
 
 	log.Debugf("Model file path : '%s', input image file : '%s', output image path : '%s', outputpath : '%s', labels file : '%s'", model_file_path, input_image_file, output_image_path, outputpath, labels_file)
+	fmt.Println("Model file path : '%s', input image file : '%s', output image path : '%s', outputpath : '%s', labels file : '%s'", model_file_path, input_image_file, output_image_path, outputpath, labels_file)
 	classify(model_file_path, input_image_file, outputpath, labels_file)
 
 	context.SetOutput(ivOutput, outputpath)

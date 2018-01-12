@@ -32,7 +32,7 @@ import (
 	"io/ioutil"
 	//"log"
 	"os"
-	"path/filepath"
+	//"path/filepath"
 
 	"golang.org/x/image/colornames"
 
