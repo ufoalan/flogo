@@ -63,7 +63,7 @@ Inputs and Outputs:
       "ref": "github.com/ufoalan/flogo/trigger/face_detector",
       "settings": {
         "cameraID": "0",
-        "classifier_file": "/home/pi/go/src/gocv.io/x/gocv/data/haarcascade_frontalface_default.xml"
+        "classifier_file": "/home/pi/go/src/gocv.io/x/gocv/data/haarcascade_frontalface_default.xml",
         "save_image_path": "/home/pi/flogo_workspace/images"
       },
 ```
