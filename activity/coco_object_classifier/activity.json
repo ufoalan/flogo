@@ -1,11 +1,11 @@
 {
   "name": "coco_object_classifier",
   "type": "flogo:activity",
-  "ref": "github.com/ufoalan/activity/coco_object_classifier",
+  "ref": "github.com/ufoalan/flogo/activity/coco_object_classifier",
   "version": "0.0.1",
   "title": "COCO Object Classifier",
   "description": "This activity make uses of tensorflow pre-trained deep learning model to classify the objects in an image. The pre-trained model is based on COCO dataset",
-  "homepage": "https://github.com/ufoalan/activity/tree/master/coco_object_classifier",
+  "homepage": "https://github.com/ufoalan/flogo/activity/tree/master/coco_object_classifier",
   "inputs":[
     {
       "name": "model_file_path",
