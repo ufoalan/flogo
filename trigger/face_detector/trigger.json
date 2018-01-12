@@ -1,0 +1,43 @@
+{
+  "name": "face_detector",
+  "ref": "github.com/ufoalan/flogo/trigger/face_detect",
+  "version": "0.0.1",
+  "type": "flogo:trigger",
+  "description": "This trigger is built for RaspberryPi camera-v2 and MacBook camera for human face detection.",
+  "author": "Alan Lee <you.name@example.org>",
+  "settings":[
+    {
+      "name": "cameraID",
+      "type": "integer",
+      "required": "true"
+    },
+    {
+      "name": "classifier_file",
+      "type": "string",
+      "required": "true"
+    },
+    {
+      "name": "stored_image_path",
+      "type": "string",
+      "required": "true"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "type": "string"
+    },
+    {
+      "name": "image",
+      "type": "string"
+    }
+  ],
+  "handler": {
+    "settings": [
+      {
+        "name": "handler_setting",
+        "type": "string"
+      }
+    ]
+  }
+}
