@@ -1,0 +1,67 @@
+{
+  "name": "face_detection_demo",
+  "type": "flogo:app",
+  "version": "0.0.1",
+  "description": "This is a simple demo to verify the face_detector_trigger. When a human face is detected, the image will be stored in provided file path",
+  "triggers": [
+    {
+      "id": "face_detector_trigger",
+      "ref": "github.com/ufoalan/flogo/trigger/face_detector",
+      "settings": {
+        "cameraID": "0",
+        "classifier_file": "/Users/allee/go/src/gocv.io/x/gocv/data/haarcascade_frontalface_default.xml",
+        "save_image_path": "/Users/allee/Downloads/tmp"
+      },
+      "handlers": [
+        {
+          "actionId": "my_simple_flow",
+          "settings": {
+            "method": "GET",
+            "path": "/test"
+          }
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "my_simple_flow",
+      "name": "my simple flow",
+      "ref": "github.com/TIBCOSoftware/flogo-contrib/action/flow",
+      "data": {
+        "flow": {
+          "name": "my simple flow",
+          "attributes": [],
+          "rootTask": {
+            "id": 1,
+            "type": 1,
+            "tasks": [
+              {
+                "id": 2,
+                "type": 1,
+                "activityRef": "github.com/TIBCOSoftware/flogo-contrib/activity/log",
+                "name": "log",
+                "attributes": [
+                  {
+                    "name": "message",
+                    "value": "Simple Log",
+                    "type": "string"
+                  }
+                ],
+                "inputMappings": [
+                  {
+                    "type": 1,
+                    "value": "{T.image}",
+                    "mapTo": "message"
+                  }
+                ]
+              }
+            ],
+            "links": [
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
