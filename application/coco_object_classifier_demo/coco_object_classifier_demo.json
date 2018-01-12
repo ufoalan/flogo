@@ -1,0 +1,102 @@
+{
+  "name": "coco_object_classifier_demo2",
+  "type": "flogo:app",
+  "version": "0.0.1",
+  "description": "This is a simple demo to verify the COCO object classifier activity.",
+  "triggers": [
+    {
+      "id": "face_detector_trigger",
+      "ref": "github.com/ufoalan/flogo/trigger/face_detector",
+      "settings": {
+        "cameraID": "0",
+        "classifier_file": "/home/pi/go/src/gocv.io/x/gocv/data/haarcascade_frontalface_default.xml",
+        "save_image_path": "/home/pi/Downloads/tmp"
+      },
+      "handlers": [
+        {
+          "actionId": "my_simple_flow",
+          "settings": {
+            "method": "GET",
+            "path": "/test"
+          }
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "my_simple_flow",
+      "name": "my simple flow",
+      "ref": "github.com/TIBCOSoftware/flogo-contrib/action/flow",
+      "data": {
+        "flow": {
+          "name": "my simple flow",
+          "attributes": [],
+          "rootTask": {
+            "id": 1,
+            "type": 1,
+            "tasks": [
+              {
+                "id": 2,
+                "type": 1,
+                "activityRef": "github.com/ufoalan/flogo/activity/coco_object_classifier",
+                "name": "object classification",
+                "attributes": [
+                  {
+                    "name": "model_file_path",
+                    "value": "/home/pi/tf_test/ssd_mobilenet_v1_coco_11_06_2017/frozen_inference_graph.pb",
+                    "type": "string"
+                  },
+                  {
+                    "name": "input_image_file",
+                    "value": "/home/pi",
+                    "type": "string"
+                  },
+                  {
+                    "name": "output_image_path",
+                    "value": "/home/pi/Downloads/tmp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "labels_file",
+                    "value": "/home/pi/tf_test/labels.txt",
+                    "type": "string"
+                  }
+                ],
+                "inputMappings": [
+                  {
+                    "type": 1,
+                    "value": "{T.image}",
+                    "mapTo": "input_image_file"
+                  }
+                ]
+              },
+              {
+                "id": 3,
+                "type": 1,
+                "activityRef": "github.com/TIBCOSoftware/flogo-contrib/activity/log",
+                "name": "log",
+                "attributes": [
+                  {
+                    "name": "message",
+                    "value": "Simple Log",
+                    "type": "string"
+                  }
+                ],
+                "inputMappings": [
+                  {
+                    "type": 1,
+                    "value": "{T.output}",
+                    "mapTo": "message"
+                  }
+                ]
+              }
+            ],
+            "links": [
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
