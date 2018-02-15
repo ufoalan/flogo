@@ -1,6 +1,6 @@
 {
   "name": "lsm9ds1",
-  "ref": "github.com/ufoalan/flogo/trigger/face_detector",
+  "ref": "github.com/ufoalan/flogo/trigger/lsm9ds1",
   "version": "0.0.1",
   "type": "flogo:trigger",
   "description": "This trigger is for sending accelerator sensor data",
