@@ -3,10 +3,12 @@ package lsm9ds1
 import (
 	"github.com/TIBCOSoftware/flogo-lib/core/action"
 	"github.com/TIBCOSoftware/flogo-lib/core/trigger"
+	"github.com/TIBCOSoftware/flogo-lib/logger"
         "fmt"
         "time"
         "math"
         "os"
+	"strconv"
         "github.com/kidoman/embd"
         _ "github.com/kidoman/embd/host/all"
 //        "./lsm9ds1"
@@ -18,6 +20,8 @@ const A_GAIN float64 = 0.0573
 const G_GAIN float64 = 0.070
 const RAD_TO_DEG float64 = 57.29578
 const M_PI float64 = 3.14159265358979323846
+
+var log = logger.GetLogger("trigger-lsm9ds1")
 
 // MyTriggerFactory My Trigger factory
 type MyTriggerFactory struct{
@@ -69,9 +73,12 @@ func (t *MyTrigger) Start() error {
         //var accRaw [3]int
         //var gyrRaw [3]int
 
-	interval, _ := strconv.Atoi(interval)
+	tmp := t.config.GetSetting("interval")
+	interval, _ := strconv.Atoi(tmp)
 
-        lsm := lsm9ds1.NewLSM9DS1(embd.NewI2CBus(1))
+	fmt.Println("interval : %d\n", interval)
+        //lsm := lsm9ds1.NewLSM9DS1(embd.NewI2CBus(1))
+        lsm := NewLSM9DS1(embd.NewI2CBus(1))
         if (!lsm.DetectIMU()) {
                 os.Exit(1)
         }
@@ -125,9 +132,9 @@ func (t *MyTrigger) Start() error {
                                 log.Debugf("Object Detection Trigger: Registering handler for Action Id: [%s]", handlerCfg.ActionId)
                                 fmt.Printf("Object Detection Trigger: Registering handler for Action Id: [%s]", handlerCfg.ActionId)
 
-                                t1 := time.Now()
+//                                t1 := time.Now()
 
-                                data := map[integer]interface{}{
+                                data := map[string]interface{}{
                                         "accX":  AccXangle,
                                         "accY":  AccYangle,
                                         "gyrX":  gyroXangle,
@@ -158,7 +165,7 @@ func (t *MyTrigger) Start() error {
                         }
                 }
 
-                time.Sleep(interval * time.Millisecond)
+                time.Sleep(1000 * time.Millisecond)
         }
 
 	return nil
@@ -169,3 +176,10 @@ func (t *MyTrigger) Stop() error {
 	// stop the trigger
 	return nil
 }
+
+func handlerIsValid(handler *trigger.HandlerConfig) bool {
+        //validate path
+
+        return true
+}
+

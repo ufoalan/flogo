@@ -1,10 +1,12 @@
 {
   "name": "lsm9ds1",
+  "type": "flogo:trigger",
   "ref": "github.com/ufoalan/flogo/trigger/lsm9ds1",
   "version": "0.0.1",
-  "type": "flogo:trigger",
-  "description": "This trigger is for sending accelerator sensor data",
+  "title": "Receive MQTT Message",
   "author": "Alan Lee <you.name@example.org>",
+  "description": "This trigger is for sending accelerator sensor data",
+  "homepage": "https://github.com/ufoalan/flogo/tree/master/trigger/lsm9ds1",
   "settings":[
     {
       "name": "interval",
@@ -48,7 +50,7 @@
     {
       "name": "magZ",
       "type": "integer"
-    },
+    }
   ],
   "handler": {
     "settings": [
