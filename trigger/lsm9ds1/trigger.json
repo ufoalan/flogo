@@ -1,0 +1,61 @@
+{
+  "name": "lsm9ds1",
+  "ref": "github.com/ufoalan/flogo/trigger/face_detector",
+  "version": "0.0.1",
+  "type": "flogo:trigger",
+  "description": "This trigger is for sending accelerator sensor data",
+  "author": "Alan Lee <you.name@example.org>",
+  "settings":[
+    {
+      "name": "interval",
+      "type": "integer",
+      "required": "true"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "accX",
+      "type": "integer"
+    },
+    {
+      "name": "accY",
+      "type": "integer"
+    },
+    {
+      "name": "accZ",
+      "type": "integer"
+    },
+    {
+      "name": "gyrX",
+      "type": "integer"
+    },
+    {
+      "name": "gyrY",
+      "type": "integer"
+    },
+    {
+      "name": "gyrZ",
+      "type": "integer"
+    },
+    {
+      "name": "magX",
+      "type": "integer"
+    },
+    {
+      "name": "magY",
+      "type": "integer"
+    },
+    {
+      "name": "magZ",
+      "type": "integer"
+    },
+  ],
+  "handler": {
+    "settings": [
+      {
+        "name": "handler_setting",
+        "type": "string"
+      }
+    ]
+  }
+}
