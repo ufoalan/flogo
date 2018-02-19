@@ -3,7 +3,7 @@
   "type": "flogo:trigger",
   "ref": "github.com/ufoalan/flogo/trigger/lsm9ds1",
   "version": "0.0.1",
-  "title": "Receive MQTT Message",
+  "title": "Publish lsm9ds1 accelormeter/gyrometer/magnetic data",
   "author": "Alan Lee <you.name@example.org>",
   "description": "This trigger is for sending accelerator sensor data",
   "homepage": "https://github.com/ufoalan/flogo/tree/master/trigger/lsm9ds1",
