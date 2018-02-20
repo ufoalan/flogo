@@ -170,7 +170,7 @@ func (t *MyTrigger) Start() error {
                         }
                 }
 
-                time.Sleep(1000 * time.Millisecond)
+                time.Sleep(time.Duration(interval) * time.Millisecond)
         }
 
 	return nil
