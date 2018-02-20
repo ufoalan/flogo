@@ -16,6 +16,14 @@
   ],
   "outputs": [
     {
+      "name": "output",
+      "type": "string"
+    },
+    {
+      "name": "eventTime",
+      "type": "string"
+    },
+    {
       "name": "accX",
       "type": "integer"
     },

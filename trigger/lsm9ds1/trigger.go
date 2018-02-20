@@ -134,7 +134,12 @@ func (t *MyTrigger) Start() error {
 
 //                                t1 := time.Now()
 
+				t1 := time.Now()
+				t2 := t1.Format("2006-01-02 15:04:05.000000")
+				out := t2 + "," + AccXangle + "," + AccYangle + "," + "gyroXangle" + "," + gyroYangle
                                 data := map[string]interface{}{
+                                        "output": out,
+					"eventTime" : t2,
                                         "accX":  AccXangle,
                                         "accY":  AccYangle,
                                         "gyrX":  gyroXangle,
