@@ -1,0 +1,39 @@
+{
+  "name": "tcp_server",
+  "type": "flogo:trigger",
+  "ref": "github.com/ufoalan/flogo/trigger/tcp_server",
+  "version": "0.0.1",
+  "title": "TCP Server",
+  "author": "Alan Lee <you.name@example.org>",
+  "description": "trigger description",
+  "homepage": "https://github.com/ufoalan/flogo/tree/master/trigger/tcp_server",
+  "settings":[
+    {
+      "name": "port",
+      "type": "string",
+      "required": "true"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "type": "string"
+    },
+    {
+      "name": "eventTime",
+      "type": "string"
+    },
+    {
+      "name": "status",
+      "type": "string"
+    }
+  ],
+  "handler": {
+    "settings": [
+      {
+        "name": "handler_setting",
+        "type": "string"
+      }
+    ]
+  }
+}
