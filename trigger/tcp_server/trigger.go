@@ -46,7 +46,7 @@ func (t *MyTrigger) Metadata() *trigger.Metadata {
 // Start implements trigger.Trigger.Start
 func (t *MyTrigger) Start() error {
         port := t.config.GetSetting("port")
-	url := "localhost:" + port
+	url := "0.0.0.0:" + port
 
 	// start the trigger
         //server := tcp_server.New("localhost:9999")
