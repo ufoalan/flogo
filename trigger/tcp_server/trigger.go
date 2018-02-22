@@ -7,8 +7,6 @@ import (
 	"github.com/firstrow/tcp_server"
 	"fmt"
         "time"
-        "math"
-        "os"
 )
 
 var log = logger.GetLogger("trigger-lsm9ds1")
@@ -78,7 +76,6 @@ func (t *MyTrigger) Start() error {
                                 startAttrs, err := t.metadata.OutputsToAttrs(data, false)
                                 if err != nil {
                                         log.Errorf("After run error' %s'\n", err)
-                                        return err
                                 }
 
                                 
@@ -91,7 +88,6 @@ func (t *MyTrigger) Start() error {
                                 if err != nil {
                                         log.Debugf("Object Detection Trigger Error: %s", err.Error())
                                         fmt.Printf("Object Detection Trigger Error: %s", err.Error())
-                                        return nil
                                 }
                         } else {
                                 panic(fmt.Sprintf("Invalid handler: %v", handlerCfg))
@@ -123,7 +119,6 @@ func (t *MyTrigger) Start() error {
                                 startAttrs, err := t.metadata.OutputsToAttrs(data, false)
                                 if err != nil {
                                         log.Errorf("After run error' %s'\n", err)
-                                        return err
                                 }
 
 
@@ -136,7 +131,6 @@ func (t *MyTrigger) Start() error {
                                 if err != nil {
                                         log.Debugf("Object Detection Trigger Error: %s", err.Error())
                                         fmt.Printf("Object Detection Trigger Error: %s", err.Error())
-                                        return nil
                                 }
                         } else {
                                 panic(fmt.Sprintf("Invalid handler: %v", handlerCfg))
@@ -165,7 +159,6 @@ func (t *MyTrigger) Start() error {
                                 startAttrs, err := t.metadata.OutputsToAttrs(data, false)
                                 if err != nil {
                                         log.Errorf("After run error' %s'\n", err)
-                                        return err
                                 }
 
 
@@ -178,7 +171,6 @@ func (t *MyTrigger) Start() error {
                                 if err != nil {
                                         log.Debugf("Object Detection Trigger Error: %s", err.Error())
                                         fmt.Printf("Object Detection Trigger Error: %s", err.Error())
-                                        return nil
                                 }
                         } else {
                                 panic(fmt.Sprintf("Invalid handler: %v", handlerCfg))
@@ -195,4 +187,10 @@ func (t *MyTrigger) Start() error {
 func (t *MyTrigger) Stop() error {
 	// stop the trigger
 	return nil
+}
+
+func handlerIsValid(handler *trigger.HandlerConfig) bool {
+        //validate path
+
+        return true
 }
