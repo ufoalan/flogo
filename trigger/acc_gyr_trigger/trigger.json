@@ -1,0 +1,71 @@
+{
+  "name": "acc_gyr_trigger",
+  "type": "flogo:trigger",
+  "ref": "github.com/ufoalan/flogo/trigger/acc_gyr_trigger",
+  "version": "0.0.1",
+  "title": "Publish lsm9ds1 accelormeter/gyrometer/magnetic data",
+  "author": "Alan Lee <alan.lee@tibco.com>",
+  "description": "This trigger is for sending accelerator sensor data",
+  "homepage": "https://github.com/ufoalan/flogo/tree/master/trigger/acc_gyr_trigger",
+  "settings":[
+    {
+      "name": "sampleRate",
+      "type": "integer",
+      "required": "true"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "type": "string"
+    },
+    {
+      "name": "eventTime",
+      "type": "string"
+    },
+    {
+      "name": "accX",
+      "type": "integer"
+    },
+    {
+      "name": "accY",
+      "type": "integer"
+    },
+    {
+      "name": "accZ",
+      "type": "integer"
+    },
+    {
+      "name": "gyrX",
+      "type": "integer"
+    },
+    {
+      "name": "gyrY",
+      "type": "integer"
+    },
+    {
+      "name": "gyrZ",
+      "type": "integer"
+    },
+    {
+      "name": "magX",
+      "type": "integer"
+    },
+    {
+      "name": "magY",
+      "type": "integer"
+    },
+    {
+      "name": "magZ",
+      "type": "integer"
+    }
+  ],
+  "handler": {
+    "settings": [
+      {
+        "name": "handler_setting",
+        "type": "string"
+      }
+    ]
+  }
+}
