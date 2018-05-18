@@ -1,0 +1,64 @@
+{
+  "name": "executecommand",
+  "type": "flogo:activity",
+  "ref": "github.com/ufoalan/flogo/activity/executecommand",
+  "version": "0.0.1",
+  "title": "ExecuteCommand",
+  "description": "Execute an OS command",
+  "author": "Alan Lee <allee@tibco.com>",
+  "input":[
+    {
+      "name": "command",
+      "type": "string",
+      "required": true,
+      "value": "start"
+    },
+    {
+      "name": "background",
+      "type": "boolean",
+      "value": true
+    },
+    {
+      "name": "arg1",
+      "type": "string"
+    },
+    {
+      "name": "arg2",
+      "type": "string"
+    },
+    {
+      "name": "arg3",
+      "type": "string"
+    },
+    {
+      "name": "arg4",
+      "type": "string"
+    },
+    {
+      "name": "arg5",
+      "type": "string"
+    },
+    {
+      "name": "arg6",
+      "type": "string"
+    },
+    {
+      "name": "arg7",
+      "type": "string"
+    },
+    {
+      "name": "arg8",
+      "type": "string"
+    }
+  ],
+  "output": [
+    {
+      "name": "result",
+      "type": "string"
+    },
+    {
+      "name": "pid",
+      "type": "string"
+    }
+  ]
+}
