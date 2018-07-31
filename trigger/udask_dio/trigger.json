@@ -1,5 +1,6 @@
 {
   "name": "udask_dio",
+  "ref": "github.com/ufoalan/flogo/trigger/udask_dio",
   "version": "0.0.1",
   "type": "flogo:trigger",
   "description": "trigger description",

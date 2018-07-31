@@ -2,7 +2,6 @@ package udask_dio
 // #cgo LDFLAGS: -L/home/ubuntu/usb-dask_101_i686/lib -lusb_dask
 // #cgo CFLAGS: -I/home/ubuntu/usb-dask_101_i686/include
 // #include "udask.h"
-
 import "C"
 import (
 	"fmt"
@@ -45,8 +44,8 @@ func (t *MyTrigger) Metadata() *trigger.Metadata {
 // Start implements trigger.Trigger.Start
 func (t *MyTrigger) Start() error {
 	// start the trigger
-        var cardnum unit = 1;
-        var card = C.UD_Register_Card(C.USB_2405, cardnum);
+        var cardnum uint16 = 1;
+        var card = C.UD_Register_Card(C.USB_2405, C.U16(cardnum));
         fmt.Printf("%d\n", card);
 	return nil
 }
